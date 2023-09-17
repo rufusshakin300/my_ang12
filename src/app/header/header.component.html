@@ -1,0 +1,9 @@
+<header>
+  <nav>
+    <ul>
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/signup" routerLinkActive="active">Signup</a></li>
+      <li><a (click)="logout()" *ngIf="isAuthenticated">Logout</a></li>
+    </ul>
+  </nav>
+</header>

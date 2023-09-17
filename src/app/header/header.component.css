@@ -1,0 +1,39 @@
+/* header.component.css */
+
+/* Style the header container */
+header {
+    background-color: #333; /* Background color of the header */
+    color: #fff; /* Text color */
+    padding: 10px 0; /* Add some padding to the top and bottom */
+  }
+  
+  /* Style the navigation menu */
+  nav {
+    text-align: right; /* Align menu items to the right */
+  }
+  
+  /* Style the navigation menu items */
+  nav ul {
+    list-style: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline; /* Display menu items horizontally */
+    margin-right: 20px; /* Add spacing between menu items */
+  }
+  
+  /* Style the navigation links */
+  nav ul li a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #fff; /* Text color for links */
+    font-weight: bold; /* Make links bold */
+    transition: color 0.3s; /* Add a smooth color transition effect */
+  }
+  
+  /* Style the active link */
+  nav ul li a.active {
+    color: #ff5722; /* Change the color of the active link */
+  }
+  
