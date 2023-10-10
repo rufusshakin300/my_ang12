@@ -2,12 +2,27 @@
 <header class="header-container">
   <h4>Welcome to the Home Page</h4>
   <!-- Button to display the form -->
-  <button (click)="showForm = !showForm">Create employee</button>
+  <button (click)="showForm = !showForm">Add employee</button>
 </header>
+<div class="app-container">
+  <div class="sidenavbar">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
 <div *ngIf="showForm">
-  <form #employeeForm="ngForm" (ngSubmit)="addEmployee(employeeForm.value)">
-    <h2>Add/Edit Employee</h2>
+  <form
+    #employeeForm="ngForm"
+    (ngSubmit)="
+      editMode
+        ? updateEmployeeRecord(employeeForm.value)
+        : addEmployee(employeeForm.value)
+    "
+  >
+    <h2>{{ editMode ? "Edit Employee" : "Add Employee" }}</h2>
     <div class="form-group">
       <label for="employeeName">Employee Name:</label>
       <input type="text" id="employeeName" name="employeeName" ngModel />
@@ -20,10 +35,7 @@
       <label for="role">Role:</label>
       <input type="text" id="role" name="role" ngModel />
     </div>
-    <input
-      type="submit"
-      value="{{ editMode ? 'UpdateProduct' : 'AddProduct' }}"
-    />
+    <input type="submit" value="{{ editMode ? 'Update' : 'Add' }} Employee" />
   </form>
 </div>
 <table>
@@ -33,9 +45,7 @@
       <th>employeeName</th>
       <th>mobileNo</th>
       <th>role</th>
-      <th>status</th>
       <th>Action</th>
-      <th>Edit(status)</th>
     </tr>
   </thead>
   <tbody>
@@ -44,16 +54,13 @@
       <td>{{ employee.employeeName }}</td>
       <td>{{ employee.mobileNo }}</td>
       <td>{{ employee.role }}</td>
-      <td>{{ employee.status }}</td>
 
       <td>
-        <!-- <button (click)="updateEmployee(employee)">Edit</button> -->
+        <button (click)="updateEmployee(employee)">Edit</button>
         <button (click)="deleteEmployee(employee.id)">Delete</button>
-      </td>
-      <td>
-        <button (click)="toggleStatus(employee)">{{ status }}</button>
       </td>
     </tr>
   </tbody>
 </table>
-<input type="submit" value="Fetch-emp" (click)="CreateEmployee()" />
+<!-- <input type="submit" value="Fetch-emp" (click)="CreateEmployee()" /> -->
+<!-- home.component.html -->

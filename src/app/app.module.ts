@@ -14,6 +14,13 @@ import { LogoutComponent } from './component/logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ReportComponent } from './components/report/report.component';
+import { AboutComponent } from './components/about/about.component';
+import { AttendanceComponent } from './components/attendance/attendance.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +29,14 @@ import {HttpClientModule} from '@angular/common/http';
     SignupComponent,
     LoginComponent,
     LogoutComponent,
-    HomeComponent
+    HomeComponent,
+    SidebarComponent,
+    ReportComponent,
+    AboutComponent,
+    AttendanceComponent,
+    
+    
+
   ],
   imports: [
     BrowserModule,
