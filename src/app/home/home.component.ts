@@ -18,22 +18,22 @@ export class HomeComponent implements OnInit {
   editMode: boolean = false;
   showForm: boolean = false;
   @ViewChild('employeeForm')
-  form!: NgForm ;
+  form!: NgForm;
   status: string = 'click';
- 
+
 
   employee: Employee | null = null;
 
-  constructor(private http: HttpClient, private employeeService: EmployeeService) {}
-  
+  constructor(private http: HttpClient, private employeeService: EmployeeService) { }
+
   toggleStatus(employee: Employee) {
     employee.status =
       employee.status === 'attended' ? 'unattended' : 'attended';
     this.updateEmployee(employee);
   }
-  
 
-  
+
+
 
   selectEmployee(employee: Employee) {
     this.employeeService.setSelectedEmployee(employee);
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   }
   // CreateEmployee() {
   //   this.getdata();
-    
+
   // }
 
   // Add an employee
@@ -76,14 +76,14 @@ export class HomeComponent implements OnInit {
         ...this.employee,
         ...updatedEmployeeData
       };
-  
+
       // Update the local data
       this.updateEmployee(updatedEmployee);
       this.editMode = false;
-  
+
       // Reset the form
       this.form.reset();
-  
+
       // Store the employee ID in a variable
       const employeeId = this.employee.id;
       if (employeeId) {
@@ -95,21 +95,21 @@ export class HomeComponent implements OnInit {
           .subscribe(() => {
             console.log("Employee data updated on Firebase.");
             this.getdata();
-            
+
             // Now, set this.employee to null after the update is complete
             this.employee = null;
           });
       }
     }
   }
-  
-  
-  
+
+
+
   updateEmployee(employee: Employee) {
     let employeeId = employee.id;
     this.editMode = true; // Set editMode to true
     this.employee = employee;
-  
+
     // Populate the form with employee data
     this.form.setValue({
       employeeName: employee.employeeName,
@@ -118,10 +118,10 @@ export class HomeComponent implements OnInit {
     });
 
   }
-  
-  
-  
-  
+
+
+
+
   private getdata() {
     this.http
       .get<{ [key: string]: Employee }>(
@@ -151,6 +151,7 @@ export class HomeComponent implements OnInit {
     this.http
       .delete(`https://tu-ang-default-rtdb.firebaseio.com/employees/${id}.json`)
       .subscribe();
+    this.getdata();
   }
   // Inside your HomeComponent or relevant component
 }
